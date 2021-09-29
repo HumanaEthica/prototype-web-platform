@@ -1,0 +1,26 @@
+nav img {
+    max-height: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+ .carousel-caption {
+     margin-bottom: 5%;
+}
+
+.carousel-caption h5 {
+    font-size: 5em;
+}
+
+.carousel-container {
+    height:0;
+}
+
+.card {
+    display: inline-block;
+    margin: 1rem;
+}
+
+.event-image img {
+    height: 20rem;
+}

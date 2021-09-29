@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> {{event.name}} </h1>
+
+<br><hr>
+<h3>Descrição:</h3>
+    {% if has_image %}
+<br>
+        <div class="container event-image">    <img src="{{ url_for('getEventImg', eventID=event.id) }}">
+</div>
+        <br>
+    {% endif %}
+<p>{{event.description}}</p>
+
+<br><hr>
+<h3>Responsável por esta atividade</h3>
+{% include '_org.html' %}
+
+    <hr>
+    <a href="{{ url_for("eventSignup", eventID=event.id) }}" class="btn btn-primary btn-lg" role="button">Inscrição no evento</a>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block header %}
+<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}">
+
+{% endblock %}
+
+{% block content %}
+
+
+<form class="form-signin" action="" method="post">
+    
+
+
+    <img class="mb-4" src="{{url_for('static', filename='he_logo.png')}}" alt="" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Formulário de inscrição</h1> <!-- #TODO Pensar num texto melhor -->
+
+
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type != 'hidden' %}
+      {{ field.label }}
+      {{ field(class="form-control")}}
+    {% endfor %}
+    
+
+    <p><b> #TODO COLOCAR TEXTO IMPORTANTE AQUI!</b></p>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Registar</button>
+  </form>
+
+
+  <script>
+
+function validateNIF(nif)
+
+// https://gist.github.com/Pipas/69ab5b514a53a494ec2a80669e950569
+{
+    if(!['1', '2', '3', '5', '6', '8'].includes(nif.substr(0,1)) && 
+       !['45', '70', '71', '72', '77', '79', '90', '91', '98', '99'].includes(nif.substr(0,2)))
+        return false;
+
+    let total = nif[0] * 9 + nif[1] * 8 + nif[2] * 7 + nif[3] * 6 + nif[4] * 5 + nif[5] * 4 + nif[6] * 3 + nif[7] * 2;
+
+    let modulo11 = total - parseInt(total / 11) * 11;
+    let comparador = modulo11 == 1 || modulo11 == 0 ? 0 : 11 - modulo11;
+
+    return nif[8] == comparador
+}
+
+
+    // form = document.getElementsByTagName("form")[0];
+    nif = document.getElementById("nif")
+    // form = document.getElementsBy  TagName("form")[0];
+
+    nif.addEventListener("input", function(e) {
+      if (validateNIF(nif.value)) {
+        nif.setCustomValidity("");
+        // nif.classList.add("was-validated")
+
+      }
+      else {
+        nif.setCustomValidity("NIF inválido");
+      }
+    });
+  </script>
+
+  {% endblock %}

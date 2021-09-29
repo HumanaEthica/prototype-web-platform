@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block header %}
+<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}">
+
+{% endblock %}
+
+{% block content %}
+
+
+<form class="form-signin" action="" method="post">
+    
+    <!-- <img class="mb-4" src="{{url_for('static', filename='he_logo.png')}}" alt="" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Por favor inicie sessão</h1>
+    <label for="email" class="sr-only">Endreço de email</label>
+    <input type="email" id="email" class="form-control" placeholder="Endreço de email" required autofocus>
+    <label for="email" class="sr-only">Password</label>
+    <input type="password" id="email" class="form-control" placeholder="Password" required> -->
+
+
+    <img class="mb-4" src="{{url_for('static', filename='he_logo.png')}}" alt="" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Por favor inicie sessão</h1>
+
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type != 'hidden' %}
+      {{ field.label }}
+      {{ field(class="form-control")}}
+    {% endfor %}
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sessão</button>
+    <br><br><br>
+    <p>Crie uma conta <a href="{{ url_for('signup')}}">aqui</a>.</p>
+  </form>
+
+
+  {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <table class="table">
+    <thead>
+    <tr>
+        <td>Nome</td>
+        <td>Email</td>
+        <td>Mensagem</td> <!-- FIXME think of a better word -->
+    </tr>
+    </thead>
+    <tbody>
+{#    event_singups should be instances of EventSignup, they contain a reference to a user#}
+    {% for participant in event_signups %} {# Not really a participant #}
+        <tr>
+        <td>{{ participant.user.name }}</td>
+            <td>{{ participant.user.email }}</td>
+        <td><p>{{ participant.message_to_organizer }}</p></td>
+        </tr>
+
+    {% endfor %}
+    </tbody>
+    </table>
+
+
+{% endblock %}

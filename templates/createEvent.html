@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block header %}
+<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}">
+
+{% endblock %}
+
+{% block content %}
+
+
+<form class="form-signin" method="POST" enctype="multipart/form-data">
+
+
+
+    <img class="mb-4" src="{{url_for('static', filename='he_logo.png')}}" alt="" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Formulário para criar atividades</h1> <!-- #TODO Pensar num texto melhor -->
+
+
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type not in ('hidden', 'file') %}
+      {{ field.label }}
+      {{ field(class="form-control")}}
+    {% endfor %}
+
+<div class="form-group">
+    {{ form.photo.label }}
+    {{ form.photo(class="form-control-file") }}
+    {% for error in form.photo.errors %}
+    {{ error }}
+    {% endfor %}
+</div>
+
+    <p><b> #TODO COLOCAR TEXTO IMPORTANTE AQUI!</b></p>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Registar</button>
+  </form>
+
+
+  <script>
+            document.getElementById("area").classList.add("form-select");
+            document.getElementById("photo").classList.add("form-control-file");
+            document.getElementById("photo").classList.remove("form-control")
+
+  </script>
+
+  {% endblock %}

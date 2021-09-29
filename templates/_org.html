@@ -1,0 +1,8 @@
+<div class="card" style="width: 25%">
+    <div class="card-body">
+      <h5 class="card-title">{{user.name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted"></h6>
+      <p class="card-text">{{user.role.name}}</p>
+            <a href="{{ url_for("showProfile", id=user.id) }}" class="btn btn-primary btn-sm" role="button">Mais detalhes</a>
+    </div>
+  </div>

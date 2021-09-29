@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for event in events %}
+
+<div class="card" style="width: 25%">
+    <div class="card-body">
+      <h5 class="card-title">{{event.name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted"></h6>
+      <p class="card-text">{{event.description}}</p> <!-- FIXME use url_for-->
+                    <a href="{{ url_for("viewEvent", eventID=event.id) }}" class="btn btn-primary btn-lg" role="button">Ver atividade</a>
+    </div>
+  </div>
+
+
+{% endfor %}
+
+{% endblock %}

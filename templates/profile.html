@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>{{user.name}}</3>
+<h5 style="font-size:1.2rem">Telefone: {{user.phone}}</h5><br>
+<p>Tipo: {{user.role.name}}</p>
+<hr>
+<h4>Descrição: {{user.description}}</h4>
+{% endblock %}
